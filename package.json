@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint ./src/**/*.js",
+    "rollup": "rollup -c",
+    "rollup-watch": "rollup -c -w",
     "browser-sync": "browser-sync start --server --files index.html fyrirlestur.html ./dist/styles.css ./dist/bundle.js",
     "stylelint": "stylelint ./src/styles/**/*.scss --syntax scss",
     "sass": "node-sass --source-map-embed ./src/styles/styles.scss ./dist/styles.css",
     "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./dist/styles.css",
     "test": "npm-run-all eslint stylelint",
-    "dev": "npm-run-all --parallel sass sass-watch browser-sync"
+    "dev": "npm-run-all --parallel sass sass-watch rollup-watch browser-sync"
   },
   "keywords": [],
   "author": "karl johann",
