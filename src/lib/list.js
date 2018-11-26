@@ -1,3 +1,4 @@
+/*
 import { empty } from './helpers';
 
 export default class List {
@@ -19,8 +20,7 @@ export default class List {
     // .catch(error => console.log('error', error));
   }
 }
-
-/* 
+*/
 import { empty, createElement } from './helpers';
 import { generateImg, generateTitle } from './converter';
 
@@ -65,4 +65,3 @@ export default class List {
       .then(data => console.log(data));
   }
 }
-*/
