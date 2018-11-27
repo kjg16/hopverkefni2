@@ -41,7 +41,7 @@ export default class List {
   }
 
   load() {
-    fetch('lectures.json')
+    fetch('../../lectures.json')
       .then(responce => responce.json())
       .then(json => this.init(json));
     // .then(responce => console.log('succsess', JSON.stringify(responce)))
