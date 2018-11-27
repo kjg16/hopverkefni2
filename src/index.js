@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
-
+    const page1 = document.querySelector('body');
+    page1.COMMENT_NODE = '';
   } else {
     const list = new List();
     list.load();
