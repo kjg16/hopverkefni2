@@ -1,4 +1,4 @@
-// import { createElement } from './helpers';
+import { el, empty } from './helpers';
 // import { generateImg, generateTitle } from '.converter';
 
 export default class Lecture {
@@ -23,9 +23,22 @@ export default class Lecture {
         return found;
       });
   }
+  
+  setHeader(title, category, image) {
+    const imgPath = `../${image}`;
+    console.log(title);
+    console.log(category);
+    console.log(imgPath);
+  }
+
+  addContent(content) {
+    console.log(content);
+  }
 
   renderData(data) {
-    //
+    empty(this.container);
+    this.setHeader(data.title, data.category, data.image);
+    this.addContent(data.content);
     console.log(data);
   }
 
