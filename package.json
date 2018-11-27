@@ -12,7 +12,7 @@
     "sass": "node-sass --source-map-embed ./src/styles/styles.scss ./dist/styles.css",
     "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./dist/styles.css",
     "test": "concurrently npm:eslint npm:stylelint",
-    "ug-dev": "concurrently \"npm:sass\" \"npm:sass-watch\" \"npm:rollup-watch\"",
+    "ug-dev": "concurrently npm:sass-watch npm:rollup-watch",
     "dev": "concurrently npm:sass npm:sass-watch npm:rollup-watch npm:browser-sync"
   },
   "keywords": [],

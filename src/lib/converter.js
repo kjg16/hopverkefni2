@@ -12,8 +12,8 @@ export function generateImg(imgPath) {
 export function generateTitle(title, slug) {
   const link = document.createElement('a');
   link.href = `/fyrirlestur.html?slug=${slug}`;
-  const titleEl = document.createElement('h1');
-  titleEl.appendCHild(document.createTextNode(link));
+  const titleEl = document.createElement('h1', title);
+  titleEl.appendChild(document.createTextNode(link));
   link.appendChild(titleEl);
   return link;
 }

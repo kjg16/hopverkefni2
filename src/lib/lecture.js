@@ -1,3 +1,6 @@
+// import { createElement } from './helpers';
+// import { generateImg, generateTitle } from '.converter';
+
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
@@ -13,27 +16,26 @@ export default class Lecture {
         return res.json();
       })
       .then((data) => {
-        console.log(data.lectures);
         const found = data.lectures.find(lecture => lecture.slug === inputSlug);
         if (!found) {
           throw new Error('Fyrirlestur fannst ekki');
         }
-        console.log(found);
         return found;
       });
   }
 
   renderData(data) {
     //
+    console.log(data);
   }
 
   load() {
+    // Þarf að gera: Fá js til að sækja slug síðunnar
     const qs = new URLSearchParams(window.localStorage.search);
-    console.log(window.localStorage.search);
     const slug = qs.get('slug');
     console.log(slug);
     // Virkar ekki núna fyrir hvaða fyrirlestur sem er!!
     // Byrja á að fá gögn til að birtast!!
-    this.loadLecture("html-sagan").then(data => renderData(data));
+    this.loadLecture('html-sagan').then(data => this.renderData(data));
   }
 }
