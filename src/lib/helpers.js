@@ -1,4 +1,7 @@
 export function empty(element) {
+  if (!element.firstChild) {
+    return;
+  }
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }

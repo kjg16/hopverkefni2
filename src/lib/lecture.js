@@ -1,16 +1,17 @@
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
-    this.url = '../lectures.json';
+    this.url = './lectures.json';
   }
 
   loadLecture(slug) {
+    console.log(fetch(this.url));
     return fetch(this.url)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Gat ekki sótt fyrirlestra');
         }
-        return res.json();
+        return JSON.parse(res);
       })
       .then((data) => {
         const found = data.lectures.find(i => i.slug === slug);

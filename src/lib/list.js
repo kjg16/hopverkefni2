@@ -60,8 +60,9 @@ export default class List {
   }
 
   load() {
-    empty(this.container);
+    console.log(this.container);
+    /*empty(this.container);
     this.loadLectures()
-      .then(data => console.log(data));
+      .then(data => console.log(data));*/
   }
 }
