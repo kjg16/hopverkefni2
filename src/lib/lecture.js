@@ -23,23 +23,64 @@ export default class Lecture {
         return found;
       });
   }
-  
+
   setHeader(title, category, image) {
     const imgPath = `../${image}`;
-    console.log(title);
-    console.log(category);
-    console.log(imgPath);
+    // console.log(title);
+    // console.log(category);
+    // console.log(imgPath);
+  }
+
+  embedVideo(link) {
+    // console.log(link);
+  }
+
+  renderImg(img, caption) {
+    // console.log(img);
+    // console.log(caption);
+  }
+
+  createEl(type, data) {
+    // console.log(type);
+    // console.log(data);
+  }
+
+  createList(listArray) {
+    for (let i = 0; i < listArray.length; i+=1) {
+      console.log(listArray[i]);
+    }
   }
 
   addContent(content) {
     console.log(content);
+    for (let i = 0; i < content.length; i+=1) {
+      if (content[i].type === 'youtube') {
+        this.embedVideo(content[i].data);
+      } else if (content[i].type === 'image') {
+        this.renderImg(content[i].data, content[i].caption);
+      } else if (content[i].type === 'list') {
+        this.createList(content[i].data);
+      } else {
+        this.createEl(content[i].type, content[i].data);
+      }
+    }
+  }
+
+  addFinishButton() {
+    console.log('Bæta við takka!');
+    // Þarf einnig að bæta virkni svo að ef ýtt er á takkann fer slug í storage
+  }
+
+  addBackLink() {
+    console.log('Bæta við link á heimasíðu!');
   }
 
   renderData(data) {
     empty(this.container);
     this.setHeader(data.title, data.category, data.image);
     this.addContent(data.content);
-    console.log(data);
+    this.addFinishButton();
+    this.addBackLink();
   }
 
   load() {
