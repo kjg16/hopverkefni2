@@ -121,8 +121,8 @@ export default class Lecture {
 
   load() {
     // Þarf að gera: Fá js til að sækja slug síðunnar
-    const qs = new URLSearchParams(window.localStorage.search);
-    const slug = qs.get('slug');
+    const qs = new URLSearchParams(window.URLSearchParams);
+    const slug = qs.get(0);
     console.log(slug);
     // Virkar ekki núna fyrir hvaða fyrirlestur sem er!!
     // Byrja á að fá gögn til að birtast!!
