@@ -26,13 +26,12 @@ export default class Lecture {
   }
 
   setHeader(title, category, image) {
-    // Skoða betur
     const imgPath = `../${image}`;
     const header = el('div');
     header.classList.add('lecture__header');
     header.style.backgroundImage = `url(${imgPath})`;
-    header.appendChild(el('h1', title));
     header.appendChild(el('h2', category));
+    header.appendChild(el('h1', title));
     const lecture = this.header;
     lecture.appendChild(header);
   }
@@ -40,6 +39,7 @@ export default class Lecture {
   embedVideo(link) {
     const video = el('iframe');
     video.setAttribute('src', link);
+    video.setAttribute('frameborder', 0);
     const lecture = this.container;
     lecture.appendChild(video);
   }
@@ -57,7 +57,7 @@ export default class Lecture {
     lecture.appendChild(imgdiv);
   }
 
-  createTextEl(type, data) {
+  createTextEl(type, data, attribute) {
     let addition;
     const lecture = this.container;
 
@@ -69,9 +69,12 @@ export default class Lecture {
       }
     } else if (type === 'heading') {
       addition = el('h1', data);
-    } else {
-      // quote, skoða betur
-      addition = el('p', data);
+    } else if (type === 'quote') {
+      addition = el('blockquote', data);
+      if (attribute) {
+        const cite = el('cite', attribute);
+        addition.appendChild(cite);
+      }
     }
     addition.classList.add(`lecture__${type}`);
 
@@ -89,9 +92,10 @@ export default class Lecture {
   }
 
   addContent(content) {
-    console.log(content);
     for (let i = 0; i < content.length; i += 1) {
-      const { type, data, caption } = content[i];
+      const {
+        type, data, caption, attribute,
+      } = content[i];
       if (type === 'youtube') {
         this.embedVideo(data);
       } else if (type === 'image') {
@@ -99,16 +103,16 @@ export default class Lecture {
       } else if (type === 'list') {
         this.createList(data);
       } else {
-        this.createTextEl(type, data);
+        this.createTextEl(type, data, attribute);
       }
     }
   }
 
-  finishLecture(e) {
-    console.log(e);
-    console.log('Klárakláraklára');
-    // const { target } = e;
-    // this.saveLectures(this.slug);
+  finishLecture() {
+    // Bæta við meiri virkni?
+    const qs = new URLSearchParams(window.location.search);
+    const slug = qs.get('slug');
+    saveLectures(slug);
   }
 
   addFinishButton() {
@@ -117,12 +121,14 @@ export default class Lecture {
     button.addEventListener('click', this.finishLecture);
     const lecture = this.container;
     lecture.appendChild(button);
-    console.log('Klára takka!');
-    // Þarf einnig að bæta virkni svo að ef ýtt er á takkann fer slug í storage
   }
 
   addBackLink() {
-    console.log('Bæta við link á heimasíðu!');
+    const link = el('a', 'Til baka');
+    link.href = '../../index.html';
+    link.classList.add('lecture__link');
+    const lecture = this.container;
+    lecture.appendChild(link);
   }
 
   renderData(data) {
