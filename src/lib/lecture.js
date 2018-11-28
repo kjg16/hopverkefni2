@@ -125,6 +125,6 @@ export default class Lecture {
     console.log(slug);
     // Virkar ekki núna fyrir hvaða fyrirlestur sem er!!
     // Byrja á að fá gögn til að birtast!!
-    this.loadLecture('html-sagan').then(data => this.renderData(data));
+    this.loadLecture('html-element').then(data => this.renderData(data));
   }
 }
