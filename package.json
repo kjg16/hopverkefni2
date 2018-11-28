@@ -13,7 +13,8 @@
     "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./dist/styles.css",
     "test": "concurrently npm:eslint npm:stylelint",
     "ug-dev": "concurrently npm:sass-watch npm:rollup-watch",
-    "dev": "concurrently npm:sass npm:sass-watch npm:rollup-watch npm:browser-sync"
+    "dev": "concurrently npm:sass npm:sass-watch npm:rollup-watch npm:browser-sync",
+    "devkjg": "npm-run-all --parallel sass sass-watch rollup-watch browser-sync"
   },
   "keywords": [],
   "author": "karl johann",
