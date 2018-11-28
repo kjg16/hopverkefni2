@@ -26,9 +26,9 @@ export default class Lecture {
 
   setHeader(title, category, image) {
     const imgPath = `../${image}`;
-    // console.log(title);
-    // console.log(category);
-    // console.log(imgPath);
+    console.log(title);
+    console.log(category);
+    console.log(imgPath);
   }
 
   embedVideo(link) {
@@ -36,32 +36,54 @@ export default class Lecture {
   }
 
   renderImg(img, caption) {
+    const imgdiv = document.createElement('div');
+    imgdiv.classList.add('img');
     // console.log(img);
     // console.log(caption);
   }
 
-  createEl(type, data) {
-    // console.log(type);
-    // console.log(data);
+  createTextEl(type, data) {
+    let addition;
+    const lecture = document.getElementsByClassName('lecture')[0];
+
+    if (type === 'text' || type === 'code') {
+      const dataLines = data.split('\n');
+      addition = el('div');
+      for (let i = 0; i < dataLines.length; i += 1) {
+        addition.appendChild(el('p', dataLines[i]));
+      }
+    } else if (type === 'heading') {
+      addition = el('h1', data);
+    } else {
+      addition = el('p', data);
+    }
+    addition.classList.add(`lecture-${type}`)
+
+    lecture.appendChild(addition);
   }
 
   createList(listArray) {
-    for (let i = 0; i < listArray.length; i+=1) {
-      console.log(listArray[i]);
+    const list = document.createElement('li');
+    for (let i = 0; i < listArray.length; i += 1) {
+      const item = el('ul', listArray[i]);
+      list.appendChild(item);
     }
+    const page = document.getElementsByClassName('lecture')[0];
+    page.appendChild(list);
   }
 
   addContent(content) {
     console.log(content);
-    for (let i = 0; i < content.length; i+=1) {
-      if (content[i].type === 'youtube') {
-        this.embedVideo(content[i].data);
-      } else if (content[i].type === 'image') {
-        this.renderImg(content[i].data, content[i].caption);
-      } else if (content[i].type === 'list') {
-        this.createList(content[i].data);
+    for (let i = 0; i < content.length; i += 1) {
+      const { type, data, caption } = content[i];
+      if (type === 'youtube') {
+        this.embedVideo(data);
+      } else if (type === 'image') {
+        this.renderImg(data, caption);
+      } else if (type === 'list') {
+        this.createList(data);
       } else {
-        this.createEl(content[i].type, content[i].data);
+        this.createTextEl(type, data);
       }
     }
   }
