@@ -2,7 +2,7 @@ import {
   empty,
   el,
 } from './helpers';
-
+import { loadSavedLectures } from './storage';
 
 export default class List {
   constructor() {
@@ -28,6 +28,14 @@ export default class List {
     title.classList.add('lecture__title');
     div.appendChild(title);
 
+    const fin = loadSavedLectures();
+    if (fin.find(l => l === `${lecture.slug}`)) {
+      const span = el('span');
+      span.classList.add('lecture__fin');
+      span.textContent = '✓';
+      div.appendChild(span);
+    }
+
     const link = el('a', div);
     link.href = `../../fyrirlestur.html?slug=${lecture.slug}`;
     link.classList.add('lecture__link');
@@ -39,7 +47,6 @@ export default class List {
     if (data === null) return;
     if (this.container !== null) empty(this.container);
 
-    console.log(filters);
     data.lectures.forEach((lecture) => {
       // eslint-disable-next-line no-bitwise
       if ((filters.htmlFilter & filters.cssFilter & filters.jsFilter)

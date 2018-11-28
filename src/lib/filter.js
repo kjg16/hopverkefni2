@@ -10,6 +10,9 @@ let filterJS = false;
 
 const list = new List();
 
+/**
+ * skilar hlut með núverandi stöðu filtera.
+ */
 export function getFilters() {
   return {
     htmlFilter: filterHtml,
