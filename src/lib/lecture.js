@@ -1,9 +1,10 @@
 import { el, empty } from './helpers';
-// import { generateImg, generateTitle } from '.converter';
+import { saveLectures } from './storage';
 
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
+    this.header = document.querySelector('.lecture__header');
     this.url = '../lectures.json';
   }
 
@@ -29,16 +30,17 @@ export default class Lecture {
     const header = el('div');
     header.classList.add('lecture__header');
     header.style.backgroundImage = `url(${imgPath})`;
-    header.appendChild(el('h1', title));
     header.appendChild(el('h2', category));
-    const lecture = document.getElementsByClassName('lecture')[0];
+    header.appendChild(el('h1', title));
+    const lecture = this.header;
     lecture.appendChild(header);
   }
 
   embedVideo(link) {
     const video = el('iframe');
     video.setAttribute('src', link);
-    const lecture = document.getElementsByClassName('lecture')[0];
+    video.setAttribute('frameborder', 0);
+    const lecture = this.container;
     lecture.appendChild(video);
   }
 
@@ -51,13 +53,13 @@ export default class Lecture {
     cap.classList.add('img__caption');
     imgdiv.appendChild(img);
     imgdiv.appendChild(cap);
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
     lecture.appendChild(imgdiv);
   }
 
-  createTextEl(type, data) {
+  createTextEl(type, data, attribute) {
     let addition;
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
 
     if (type === 'text' || type === 'code') {
       const dataLines = data.split('\n');
@@ -67,10 +69,14 @@ export default class Lecture {
       }
     } else if (type === 'heading') {
       addition = el('h1', data);
-    } else {
-      addition = el('p', data);
+    } else if (type === 'quote') {
+      addition = el('blockquote', data);
+      if (attribute) {
+        const cite = el('cite', attribute);
+        addition.appendChild(cite);
+      }
     }
-    addition.classList.add(`lecture__${type}`)
+    addition.classList.add(`lecture__${type}`);
 
     lecture.appendChild(addition);
   }
@@ -81,14 +87,15 @@ export default class Lecture {
       const item = el('ul', listArray[i]);
       list.appendChild(item);
     }
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
     lecture.appendChild(list);
   }
 
   addContent(content) {
-    console.log(content);
     for (let i = 0; i < content.length; i += 1) {
-      const { type, data, caption } = content[i];
+      const {
+        type, data, caption, attribute,
+      } = content[i];
       if (type === 'youtube') {
         this.embedVideo(data);
       } else if (type === 'image') {
@@ -96,18 +103,32 @@ export default class Lecture {
       } else if (type === 'list') {
         this.createList(data);
       } else {
-        this.createTextEl(type, data);
+        this.createTextEl(type, data, attribute);
       }
     }
   }
 
+  finishLecture() {
+    // Bæta við meiri virkni?
+    const qs = new URLSearchParams(window.location.search);
+    const slug = qs.get('slug');
+    saveLectures(slug);
+  }
+
   addFinishButton() {
-    console.log('Bæta við takka!');
-    // Þarf einnig að bæta virkni svo að ef ýtt er á takkann fer slug í storage
+    const button = el('button', 'Klára fyrirlestur');
+    button.classList.add('finish__button');
+    button.addEventListener('click', this.finishLecture);
+    const lecture = this.container;
+    lecture.appendChild(button);
   }
 
   addBackLink() {
-    console.log('Bæta við link á heimasíðu!');
+    const link = el('a', 'Til baka');
+    link.href = '../../index.html';
+    link.classList.add('lecture__link');
+    const lecture = this.container;
+    lecture.appendChild(link);
   }
 
   renderData(data) {
@@ -119,12 +140,8 @@ export default class Lecture {
   }
 
   load() {
-    // Þarf að gera: Fá js til að sækja slug síðunnar
-    const qs = new URLSearchParams(window.localStorage.search);
+    const qs = new URLSearchParams(window.location.search);
     const slug = qs.get('slug');
-    console.log(slug);
-    // Virkar ekki núna fyrir hvaða fyrirlestur sem er!!
-    // Byrja á að fá gögn til að birtast!!
-    this.loadLecture('html-element').then(data => this.renderData(data));
+    this.loadLecture(slug).then(data => this.renderData(data));
   }
 }
