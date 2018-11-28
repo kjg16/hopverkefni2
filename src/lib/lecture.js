@@ -37,11 +37,14 @@ export default class Lecture {
   }
 
   embedVideo(link) {
+    const videodiv = el('div');
+    videodiv.classList.add('lecture__video');
     const video = el('iframe');
     video.setAttribute('src', link);
     video.setAttribute('frameborder', 0);
+    videodiv.appendChild(video);
     const lecture = this.container;
-    lecture.appendChild(video);
+    lecture.appendChild(videodiv);
   }
 
   renderImg(image, caption) {
@@ -58,37 +61,40 @@ export default class Lecture {
   }
 
   createTextEl(type, data, attribute) {
-    let addition;
+    const additiondiv = el('div');
     const lecture = this.container;
 
     if (type === 'text' || type === 'code') {
       const dataLines = data.split('\n');
-      addition = el('div');
       for (let i = 0; i < dataLines.length; i += 1) {
-        addition.appendChild(el('p', dataLines[i]));
+        additiondiv.appendChild(el('p', dataLines[i]));
       }
     } else if (type === 'heading') {
-      addition = el('h1', data);
+      additiondiv.appendChild(el('h1', data));
     } else if (type === 'quote') {
-      addition = el('blockquote', data);
+      additiondiv.appendChild(el('blockquote', data));
       if (attribute) {
-        const cite = el('cite', attribute);
-        addition.appendChild(cite);
+        additiondiv.appendChild(el('cite', attribute));
       }
     }
-    addition.classList.add(`lecture__${type}`);
+    additiondiv.classList.add(`lecture__${type}`);
 
-    lecture.appendChild(addition);
+    lecture.appendChild(additiondiv);
   }
 
   createList(listArray) {
-    const list = document.createElement('li');
+    const listdiv = el('div');
+    listdiv.classList.add('lecture__list__container');
+    const list = el('li');
+    list.classList.add('lecture__list');
     for (let i = 0; i < listArray.length; i += 1) {
       const item = el('ul', listArray[i]);
+      item.classList.add('lecture__list__item');
       list.appendChild(item);
     }
+    listdiv.appendChild(list);
     const lecture = this.container;
-    lecture.appendChild(list);
+    lecture.appendChild(listdiv);
   }
 
   addContent(content) {
@@ -108,31 +114,44 @@ export default class Lecture {
     }
   }
 
-  finishLecture() {
-    // Bæta við meiri virkni?
+  finishLecture(e) {
+    const { target } = e;
+    const { innerText } = target;
+    if (innerText === 'Klára fyrirlestur') {
+      target.innerText = 'Fyrirlestur kláraður';
+    } else {
+      target.innerText = 'Klára fyrirlestur';
+    }
     const qs = new URLSearchParams(window.location.search);
     const slug = qs.get('slug');
     saveLectures(slug);
   }
 
   addFinishButton() {
+    const buttondiv = el('div');
+    buttondiv.classList.add('button__div');
     const button = el('button', 'Klára fyrirlestur');
     button.classList.add('finish__button');
     button.addEventListener('click', this.finishLecture);
+    buttondiv.appendChild(button);
     const lecture = this.container;
-    lecture.appendChild(button);
+    lecture.appendChild(buttondiv);
   }
 
   addBackLink() {
+    const linkdiv = el('div');
+    linkdiv.classList.add('link__div');
     const link = el('a', 'Til baka');
     link.href = '../../index.html';
     link.classList.add('lecture__link');
+    linkdiv.appendChild(link);
     const lecture = this.container;
-    lecture.appendChild(link);
+    lecture.appendChild(linkdiv);
   }
 
   renderData(data) {
-    empty(this.container);
+    const lecture = this.container;
+    empty(lecture);
     this.setHeader(data.title, data.category, data.image);
     this.addContent(data.content);
     this.addFinishButton();

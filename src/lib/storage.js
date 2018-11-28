@@ -8,9 +8,9 @@ export function loadSavedLectures() {
 
 export function saveLectures(slug) {
   const fin = loadSavedLectures();
-  const index = fin.indexOf(slug);
-  if (index >= 0) {
-    fin.splice(index, 1);
+  const count = fin.indexOf(slug);
+  if (count >= 0) {
+    fin.splice(count, 1);
   } else {
     fin.push(slug);
   }
