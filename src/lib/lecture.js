@@ -26,6 +26,11 @@ export default class Lecture {
 
   setHeader(title, category, image) {
     const imgPath = `../${image}`;
+    const header = createElement('div');
+    header.classList.add('lecture__header');
+    const img = createElement('')
+    header.appendChild(el('h1', title));
+    header.appendChild(el('h2', category));
     console.log(title);
     console.log(category);
     console.log(imgPath);
@@ -57,7 +62,7 @@ export default class Lecture {
     } else {
       addition = el('p', data);
     }
-    addition.classList.add(`lecture-${type}`)
+    addition.classList.add(`lecture__${type}`)
 
     lecture.appendChild(addition);
   }
