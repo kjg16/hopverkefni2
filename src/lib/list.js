@@ -59,8 +59,7 @@ export default class List {
     // .catch(error => console.log('error', error));
   }
 }
-
-/* 
+/*
 import { empty, createElement } from './helpers';
 import { generateImg, generateTitle } from './converter';
 
@@ -100,7 +99,8 @@ export default class List {
   }
 
   load() {
-    empty(this.container);
+    console.log(this.container);
+    /*empty(this.container);
     this.loadLectures()
       .then(data => console.log(data));
   }
