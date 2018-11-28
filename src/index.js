@@ -1,6 +1,6 @@
 import List from './lib/list';
 import Lecture from './lib/lecture';
-import initButtons, { getFilters } from './lib/lectures';
+import initButtons, { getFilters } from './lib/filter';
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isLecturePage) {
     const lecture = new Lecture();
     lecture.load();
-    // const page1 = document.querySelector('body');
-    // page1.COMMENT_NODE = '';
   } else {
     initButtons();
     const list = new List();

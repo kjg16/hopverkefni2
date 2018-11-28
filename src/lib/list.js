@@ -30,7 +30,7 @@ export default class List {
 
     const link = el('a', div);
     link.href = `../../fyrirlestur.html?slug=${lecture.slug}`;
-    title.classList.add('lecture__link');
+    link.classList.add('lecture__link');
 
     return link;
   }
