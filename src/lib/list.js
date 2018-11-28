@@ -61,3 +61,50 @@ export default class List {
     // .catch(error => console.log('error', error));
   }
 }
+/*
+import { empty, createElement } from './helpers';
+import { generateImg, generateTitle } from './converter';
+
+export default class List {
+  constructor() {
+    this.container = document.querySelector('.list');
+    this.url = '../lectures.json';
+  }
+
+  loadLectures() {
+    return fetch(this.url)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Gat ekki sótt fyrirlestra');
+        }
+        return res.json();
+      });
+  }
+
+  renderItem(item) {
+    const titleEl = generateTitle(item.title, item.slug);
+    this.container.appendChild(titleEl);
+    const imageEl = generateImg(item.thumbnail);
+    this.container.appendChild(imageEl);
+
+    // let imageElement = document.createElement('img');
+    // imageElement.src = `../../${item.thumbnail}`;
+  }
+
+  renderData(data) {
+    // let dataElement = createElement('p', JSON.stringify(data));
+    // this.container.appendChild(dataElement);
+    data.lectures.map((item) => {
+      const Item = this.renderItem(item);
+      return Item;
+    });
+  }
+
+  load() {
+    console.log(this.container);
+    /*empty(this.container);
+    this.loadLectures()
+      .then(data => console.log(data));
+  }
+}
+*/
