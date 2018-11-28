@@ -1,6 +1,6 @@
 import List from './lib/list';
 import Lecture from './lib/lecture';
-import initButtons, { getFilters } from './lib/lectures';
+import initButtons, { getFilters } from './lib/filter';
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
