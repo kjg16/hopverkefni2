@@ -1,9 +1,10 @@
 import { el, empty } from './helpers';
-// import { generateImg, generateTitle } from '.converter';
+import { saveLectures } from './storage';
 
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
+    this.header = document.querySelector('.lecture__header');
     this.url = '../lectures.json';
   }
 
@@ -25,21 +26,21 @@ export default class Lecture {
   }
 
   setHeader(title, category, image) {
+    // Skoða betur
     const imgPath = `../${image}`;
     const header = el('div');
     header.classList.add('lecture__header');
     header.style.backgroundImage = `url(${imgPath})`;
     header.appendChild(el('h1', title));
     header.appendChild(el('h2', category));
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.header;
     lecture.appendChild(header);
   }
 
   embedVideo(link) {
-    // bæta við iframe elementi með src=link
     const video = el('iframe');
     video.setAttribute('src', link);
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
     lecture.appendChild(video);
   }
 
@@ -52,13 +53,13 @@ export default class Lecture {
     cap.classList.add('img__caption');
     imgdiv.appendChild(img);
     imgdiv.appendChild(cap);
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
     lecture.appendChild(imgdiv);
   }
 
   createTextEl(type, data) {
     let addition;
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
 
     if (type === 'text' || type === 'code') {
       const dataLines = data.split('\n');
@@ -69,9 +70,10 @@ export default class Lecture {
     } else if (type === 'heading') {
       addition = el('h1', data);
     } else {
+      // quote, skoða betur
       addition = el('p', data);
     }
-    addition.classList.add(`lecture__${type}`)
+    addition.classList.add(`lecture__${type}`);
 
     lecture.appendChild(addition);
   }
@@ -82,7 +84,7 @@ export default class Lecture {
       const item = el('ul', listArray[i]);
       list.appendChild(item);
     }
-    const lecture = document.getElementsByClassName('lecture')[0];
+    const lecture = this.container;
     lecture.appendChild(list);
   }
 
@@ -102,8 +104,20 @@ export default class Lecture {
     }
   }
 
+  finishLecture(e) {
+    console.log(e);
+    console.log('Klárakláraklára');
+    // const { target } = e;
+    // this.saveLectures(this.slug);
+  }
+
   addFinishButton() {
-    console.log('Bæta við takka!');
+    const button = el('button', 'Klára fyrirlestur');
+    button.classList.add('finish__button');
+    button.addEventListener('click', this.finishLecture);
+    const lecture = this.container;
+    lecture.appendChild(button);
+    console.log('Klára takka!');
     // Þarf einnig að bæta virkni svo að ef ýtt er á takkann fer slug í storage
   }
 
@@ -120,12 +134,8 @@ export default class Lecture {
   }
 
   load() {
-    // Þarf að gera: Fá js til að sækja slug síðunnar
-    const qs = new URLSearchParams(window.localStorage.search);
+    const qs = new URLSearchParams(window.location.search);
     const slug = qs.get('slug');
-    console.log(slug);
-    // Virkar ekki núna fyrir hvaða fyrirlestur sem er!!
-    // Byrja á að fá gögn til að birtast!!
-    this.loadLecture('html-sagan').then(data => this.renderData(data));
+    this.loadLecture(slug).then(data => this.renderData(data));
   }
 }
