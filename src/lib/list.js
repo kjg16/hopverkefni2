@@ -40,8 +40,10 @@ export default class List {
 
     console.log(filters);
     data.lectures.forEach((lecture) => {
-      if ((filters.htmlFilter & filters.cssFilter & filters.jsFilter) ||
-        (!filters.htmlFilter & !filters.cssFilter & !filters.jsFilter)) {
+      // eslint-disable-next-line no-bitwise
+      if ((filters.htmlFilter & filters.cssFilter & filters.jsFilter)
+        // eslint-disable-next-line no-bitwise
+        || (!filters.htmlFilter & !filters.cssFilter & !filters.jsFilter)) {
         this.container.appendChild(this.createLecture(lecture));
       } else {
         if (filters.htmlFilter && lecture.category === 'html') this.container.appendChild(this.createLecture(lecture));
