@@ -26,25 +26,34 @@ export default class Lecture {
 
   setHeader(title, category, image) {
     const imgPath = `../${image}`;
-    const header = createElement('div');
+    const header = el('div');
     header.classList.add('lecture__header');
-    const img = createElement('')
+    header.style.backgroundImage = `url(${imgPath})`;
     header.appendChild(el('h1', title));
     header.appendChild(el('h2', category));
-    console.log(title);
-    console.log(category);
-    console.log(imgPath);
+    const lecture = document.getElementsByClassName('lecture')[0];
+    lecture.appendChild(header);
   }
 
   embedVideo(link) {
-    // console.log(link);
+    // bæta við iframe elementi með src=link
+    const video = el('iframe');
+    video.setAttribute('src', link);
+    const lecture = document.getElementsByClassName('lecture')[0];
+    lecture.appendChild(video);
   }
 
-  renderImg(img, caption) {
-    const imgdiv = document.createElement('div');
-    imgdiv.classList.add('img');
-    // console.log(img);
-    // console.log(caption);
+  renderImg(image, caption) {
+    const imgdiv = el('div');
+    imgdiv.classList.add('img__div');
+    const img = el('img');
+    img.setAttribute('src', image);
+    const cap = el('p', caption);
+    cap.classList.add('img__caption');
+    imgdiv.appendChild(img);
+    imgdiv.appendChild(cap);
+    const lecture = document.getElementsByClassName('lecture')[0];
+    lecture.appendChild(imgdiv);
   }
 
   createTextEl(type, data) {
@@ -73,8 +82,8 @@ export default class Lecture {
       const item = el('ul', listArray[i]);
       list.appendChild(item);
     }
-    const page = document.getElementsByClassName('lecture')[0];
-    page.appendChild(list);
+    const lecture = document.getElementsByClassName('lecture')[0];
+    lecture.appendChild(list);
   }
 
   addContent(content) {
