@@ -37,6 +37,10 @@ export default class Lecture {
   }
 
   embedVideo(link) {
+<<<<<<< HEAD
+=======
+    // bæta við iframe elementi með src=link
+>>>>>>> c50fcfda8a920cacba43f4ea1480415a9681af00
     const video = el('iframe');
     video.setAttribute('src', link);
     video.setAttribute('frameborder', 0);

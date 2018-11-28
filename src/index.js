@@ -1,6 +1,6 @@
 import List from './lib/list';
 import Lecture from './lib/lecture';
-import initButtons, { getFilters } from './lib/fyrirlestrar';
+import initButtons, { getFilters } from './lib/lectures';
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // page1.COMMENT_NODE = '';
   } else {
     initButtons();
-
-    const filters = getFilters();
     const list = new List();
-    list.load(filters);
+    list.load(getFilters());
   }
 });
