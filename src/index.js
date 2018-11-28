@@ -9,13 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (isLecturePage) {
     const lecture = new Lecture();
     lecture.load();
-<<<<<<< HEAD
-    const page1 = document.querySelector('body');
-    page1.COMMENT_NODE = '';
-=======
     // const page1 = document.querySelector('body');
     // page1.COMMENT_NODE = '';
->>>>>>> ug2
   } else {
     initButtons();
 

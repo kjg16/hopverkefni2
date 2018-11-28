@@ -36,10 +36,6 @@ export default class Lecture {
   }
 
   embedVideo(link) {
-<<<<<<< HEAD
-=======
-    // bæta við iframe elementi með src=link
->>>>>>> ug2
     const video = el('iframe');
     video.setAttribute('src', link);
     const lecture = document.getElementsByClassName('lecture')[0];
@@ -129,10 +125,6 @@ export default class Lecture {
     console.log(slug);
     // Virkar ekki núna fyrir hvaða fyrirlestur sem er!!
     // Byrja á að fá gögn til að birtast!!
-<<<<<<< HEAD
     this.loadLecture('html-element').then(data => this.renderData(data));
-=======
-    this.loadLecture('html-sagan').then(data => this.renderData(data));
->>>>>>> ug2
   }
 }
