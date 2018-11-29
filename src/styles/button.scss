@@ -1,30 +1,25 @@
 @import "config";
 
 .filter {
+  display: flex;
+  max-width: $max-width;
+  margin: 0 auto;
+  margin-top: 2*$gutter;
+
+  &__buttons {
     display: flex;
-    max-width: $max-width;
-    margin-top: 3*$gutter;
-    margin: 0 auto;
-  
-&__buttons {
-      display: flex;
-      margin: auto;      
-      }
+    margin: auto;
+  }
 
-    &__btn {
-      border: none;
-      border-radius: 1rem;
-      background-color: $color-4;
-      padding: 1rem;
-      text-align: center;
-      text-decoration: none;
-      
-      margin: $gutter;
-      font-size: 1rem;
-      font-weight: bold;   
-    }
-}
-
-.selected {
-  background-color: $color-5;
+  &__btn {
+    padding: 1rem;
+    margin: $gutter;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: $color-4;
+    border: transparent;
+    border-radius: 1rem;
+  }
 }

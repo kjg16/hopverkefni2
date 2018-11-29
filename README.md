@@ -22,6 +22,8 @@ Allur `javascript` og `scss` kóði er geymdur í möppunni `/src`, javascript k
 
 Virkni `index.html` er skilgreind í `list.js` og fyrirlestrasíðurnar eru skilgreindar í `lecture.js`. Síður byrja að mestu tómar og er javascript kóðinn látinn bæta inn því efni sem á heima á síðunni hverju sinni. Upplýsingar um hvernig javascript skuli bæta upplýsingum í local storage eru í `storage.js`.
 
+Útlit er skilgreint í `scss` skrám. Sameiginleg element sem eru mikið notuð eru skilgreind í `config.scss`. Header á sér skrá. Virkni fyrir fyrirlestrarsíðu er skilgreind í `lecture.scss`. Takkar eru skilgreindir í `button.scss`.
+
 Allar myndir sem notaðar eru í verkefninu eru geymdar í möppunni `/img`, upplýsingar um hvaða mynd skuli nota hverju sinni fást úr `json` skrá.
 
 ## Þeir sem unnu verkefnið

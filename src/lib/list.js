@@ -30,25 +30,25 @@ export default class List {
     if (lecture.thumbnail) {
       const thumbnail = el('img');
       thumbnail.src = `${lecture.thumbnail}`;
-      thumbnail.classList.add('lecture__thumbnail');
+      thumbnail.classList.add('lectures__thumbnail');
       div.appendChild(thumbnail);
     }
 
     const description = el('div');
-    description.classList.add('lecture__description');
+    description.classList.add('lectures__description');
 
     // const category = el('div', `${lecture.category}`);
-    // category.classList.add('lecture__category');
+    // category.classList.add('lectures__category');
     // description.appendChild(category);
 
     // const title = el('div', `${lecture.title}`);
-    // title.classList.add('lecture__title');
+    // title.classList.add('lectures__title');
     // description.appendChild(title);
 
     // const fin = loadSavedLectures();
     // if (fin.find(l => l === `${lecture.slug}`)) {
     //   const span = el('span');
-    //   span.classList.add('lecture__fin');
+    //   span.classList.add('lectures__fin');
     //   span.textContent = '✓';
     //   description.appendChild(span);
     // }
@@ -57,7 +57,7 @@ export default class List {
 
     // const link = el('a', div);
     // link.href = `../../fyrirlestur.html?slug=${lecture.slug}`;
-    // link.classList.add('lecture__link');
+    // link.classList.add('lectures__link');
 
     return div;
   }
