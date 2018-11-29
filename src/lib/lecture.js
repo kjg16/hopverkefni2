@@ -1,5 +1,5 @@
 import { el, empty } from './helpers';
-import { saveLectures } from './storage';
+import { saveLectures, isSaved } from './storage';
 
 export default class Lecture {
   constructor() {
@@ -118,7 +118,7 @@ export default class Lecture {
     const { target } = e;
     const { innerText } = target;
     if (innerText === 'Klára fyrirlestur') {
-      target.innerText = 'Fyrirlestur kláraður';
+      target.innerText = '✓ Fyrirlestur kláraður';
     } else {
       target.innerText = 'Klára fyrirlestur';
     }
@@ -127,10 +127,15 @@ export default class Lecture {
     saveLectures(slug);
   }
 
-  addFinishButton() {
+  addFinishButton(slug) {
     const buttondiv = el('div');
     buttondiv.classList.add('button__div');
-    const button = el('button', 'Klára fyrirlestur');
+    const button = el('button');
+    if (isSaved(slug)) {
+      button.innerText = '✓ Fyrirlestur kláraður';
+    } else {
+      button.innerText = 'Klára fyrirlestur';
+    }
     button.classList.add('finish__button');
     button.addEventListener('click', this.finishLecture);
     buttondiv.appendChild(button);
@@ -154,7 +159,7 @@ export default class Lecture {
     empty(lecture);
     this.setHeader(data.title, data.category, data.image);
     this.addContent(data.content);
-    this.addFinishButton();
+    this.addFinishButton(data.slug);
     this.addBackLink();
   }
 
