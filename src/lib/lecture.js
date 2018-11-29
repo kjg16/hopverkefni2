@@ -64,10 +64,15 @@ export default class Lecture {
     const additiondiv = el('div');
     const lecture = this.container;
 
-    if (type === 'text' || type === 'code') {
+    if (type === 'text') {
       const dataLines = data.split('\n');
       for (let i = 0; i < dataLines.length; i += 1) {
         additiondiv.appendChild(el('p', dataLines[i]));
+      }
+    } else if (type === 'code') {
+      const dataLines = data.split('\n');
+      for (let i = 0; i < dataLines.length; i += 1) {
+        additiondiv.appendChild(el('pre', dataLines[i]));
       }
     } else if (type === 'heading') {
       additiondiv.appendChild(el('h1', data));
