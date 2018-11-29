@@ -27,6 +27,8 @@ export function getFilters() {
 function onFilterHtml() {
   filterHtml = !filterHtml;
   list.load(getFilters());
+  const el = document.querySelector('.htmlButton');
+  if (el) el.classList.toggle('selected');
 }
 
 /**
@@ -35,6 +37,8 @@ function onFilterHtml() {
 function onFilterCss() {
   filterCss = !filterCss;
   list.load(getFilters());
+  const el = document.querySelector('.cssButton');
+  if (el) el.classList.toggle('selected');
 }
 
 /**
@@ -43,6 +47,8 @@ function onFilterCss() {
 function onFilterJS() {
   filterJS = !filterJS;
   list.load(getFilters());
+  const el = document.querySelector('.jsButton');
+  if (el) el.classList.toggle('selected');
 }
 
 /**

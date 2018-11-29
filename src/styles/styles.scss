@@ -13,7 +13,8 @@
   box-sizing: inherit;
 }
 
-html { /* stylelint-disable-line */
+html {
+  /* stylelint-disable-line */
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: scroll; // alltaf hafa y skrollbar
@@ -22,79 +23,106 @@ html { /* stylelint-disable-line */
   font-size: 16px;
 }
 
-img { /* stylelint-disable-line */
+img {
+  /* stylelint-disable-line */
   max-width: 100%;
-}
-.filter__button {
-  position: relative;
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 /* fyrirlestrar*/
 
-.lecture{
+.hidden {
+  display: none;
+}
+
+.lectures {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1200px;
+  @include row();
+  margin: 0 auto;
+}
+
+.lecture__box {
+  display: flex;
+  flex-flow: column;
+  @include columns(3);
+  min-width: 300px;
+  background-color: $color-2;
+  margin: 10px;
+}
+
+.lecture__category {
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+.lecture__title {
+  font-size: 1.5em;
+}
+
+/* fyrirlesstur */
+
+.lecture {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-evenly;
   flex-direction: column;
 }
-    
-.lecture__text{
+
+.lecture__text {
   text-align: center;
   display: inline-block;
   text-align: left;
-  line-height: 1.3; 
+  line-height: 1.3;
   padding: 2px 0;
   width: 400px;
   margin: 20px auto;
   justify-content: left;
 }
-    
-  
-  .lecture__text p {
-    margin-bottom: 20px;
-    text-align: center;
-    grid-column: 5/12;
-  }
-.lecture__video{
+
+.lecture__text p {
+  margin-bottom: 20px;
+  text-align: center;
+  grid-column: 5/12;
+}
+
+.lecture__video {
   margin-block-start: 20px;
   height: 100px;
-  width:  100px;
+  width: 100px;
   display: inline-block;
   align-items: center;
   margin-left: 38%;
   margin-block-end: 10%;
 }
+
 .lecture__header {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: 50% 25%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 25%;
   height: 150%;
   margin: 0 auto;
   width: 100%;
+}
 
+.protector {
+  width: 100%;
+  height: 50%;
+  background-color: $color-2;
+  opacity: 0.6;
+  margin: 0 auto;
 }
-.protector{
-    width: 100%;
-    height: 50%;
-    background-color: $color-2;
-    opacity: 0.6;
-    margin: 0 auto;
-}
-.lecture__header h1{
+
+.lecture__header h1 {
   text-align: center;
 }
+
 .lecture__header h2 {
   text-align: center;
 }
 
-.hidden {
-  display: none;
-}
-
-.img__div{
+.img__div {
   display: block;
   align-items: center;
   margin-left: auto;
@@ -102,58 +130,58 @@ img { /* stylelint-disable-line */
   width: 31%;
 }
 
-
-
-.lecture__quote{
+.lecture__quote {
   text-align: left;
   width: 320px;
   padding: 10px;
   border: 1px solid brown;
   margin: 0;
   background-color: brown;
-  grid-column: 1/12;text-align: center;
+  grid-column: 1/12;
+  text-align: center;
   display: inline-block;
-  line-height: 1.3; 
+  line-height: 1.3;
   padding: 2px 0;
   width: 400px;
   margin: 20px auto;
   justify-content: left;
 }
 
-
-.lecture__heading{
+.lecture__heading {
   text-align: left;
   padding-block-start: 20px;
   padding-block-end: 20px;
-  margin-left: 40%; 
+  margin-left: 40%;
 }
 
-.lecture__code{
+.lecture__code {
   text-align: center;
   display: inline-block;
   text-align: left;
-  line-height: 1.3; 
+  line-height: 1.3;
   padding: 2px 0;
   width: 400px;
   margin: 20px auto;
   justify-content: left;
 }
 
-.lecture__list__container{
+.lecture__list__container {
   text-align: center;
   display: inline;
   text-align: left;
-  line-height: 1.3; 
+  line-height: 1.3;
   padding: 2px 0;
   width: 400px;
   margin: 20px auto;
   justify-content: left;
 }
-.lecture__list__item{
+
+.lecture__list__item {
   list-style-type: circle;
   padding: 10px;
   list-style-position: outside;
 }
-li.lecture__list{
+
+li.lecture__list {
   list-style-type: circle;
 }
