@@ -13,13 +13,9 @@ export default class List {
     window.location.href = e.currentTarget.children[0].textContent;
   }
 
-  createDescription() {
-    //
-  }
-
   createListItem(lecture) {
     const div = el('div');
-    div.classList.add('lecture__box');
+    div.classList.add('lectures__box');
     div.addEventListener('click', this.onClickLecture);
 
     const url = el('span');
@@ -34,30 +30,25 @@ export default class List {
       div.appendChild(thumbnail);
     }
 
-    const description = el('div');
-    description.classList.add('lectures__description');
+    const category = el('div', `${lecture.category}`);
+    category.classList.add('lectures__category');
+    div.appendChild(category);
 
-    // const category = el('div', `${lecture.category}`);
-    // category.classList.add('lectures__category');
-    // description.appendChild(category);
+    const title = el('div', `${lecture.title}`);
+    title.classList.add('lectures__title');
+    div.appendChild(title);
 
-    // const title = el('div', `${lecture.title}`);
-    // title.classList.add('lectures__title');
-    // description.appendChild(title);
-
-    // const fin = loadSavedLectures();
-    // if (fin.find(l => l === `${lecture.slug}`)) {
-    //   const span = el('span');
-    //   span.classList.add('lectures__fin');
-    //   span.textContent = '✓';
-    //   description.appendChild(span);
-    // }
-
-    div.classList.add(description);
+    const fin = loadSavedLectures();
+    if (fin.find(l => l === `${lecture.slug}`)) {
+      const span = el('span');
+      span.classList.add('lectures__fin');
+      span.textContent = '✓';
+      div.appendChild(span);
+    }
 
     // const link = el('a', div);
     // link.href = `../../fyrirlestur.html?slug=${lecture.slug}`;
-    // link.classList.add('lectures__link');
+    // link.classList.add('lecture__link');
 
     return div;
   }
