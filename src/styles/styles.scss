@@ -1,5 +1,6 @@
 @import "config";
 @import "header";
+@import "button";
 
 * {
   padding: 0;
@@ -58,6 +59,7 @@ img { /* stylelint-disable-line */
     grid-column: 5/12;
   }
 .lecture__video{
+  margin-block-start: 20px;
   height: 100px;
   width:  100px;
   display: inline-block;
@@ -66,17 +68,20 @@ img { /* stylelint-disable-line */
   margin-block-end: 10%;
 }
 .lecture__header {
-  margin-bottom: $gutter;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 50% 25%;
-  height: 50%;
+  height: 150%;
   margin: 0 auto;
   width: 100%;
+
+}
+.protector{
+    width: 100%;
+    height: 50%;
     background-color: $color-2;
-   
+    opacity: 0.6;
     margin: 0 auto;
-    
 }
 .lecture__header h1{
   text-align: center;
