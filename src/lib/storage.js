@@ -6,10 +6,16 @@ export function loadSavedLectures() {
   return fin;
 }
 
+export function isSaved(slug) {
+  const fin = loadSavedLectures();
+  const count = fin.indexOf(slug);
+  return (count >= 0);
+}
+
 export function saveLectures(slug) {
   const fin = loadSavedLectures();
   const count = fin.indexOf(slug);
-  if (count >= 0) {
+  if (isSaved(slug)) {
     fin.splice(count, 1);
   } else {
     fin.push(slug);
