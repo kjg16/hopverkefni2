@@ -159,3 +159,42 @@ img { /* stylelint-disable-line */
 li.lecture__list{
   list-style-type: disc;
 }
+
+
+.lectures{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
+  width: 64%;
+  margin-block-start: 10px;
+  
+
+}
+.lecture__box{
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.lectures:nth-child(2n) .lecture__box:first-child {
+  order: 2;
+}
+
+@media (min-width: 1000px) {
+  .lectures {
+    flex-direction: row;
+  }
+
+  .lecture__box {
+    margin-bottom: 100px;
+    width: 33%;
+    flex-grow: 1;
+    height: 100px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+
+  }
+}
