@@ -28,7 +28,7 @@ export default class Lecture {
   setHeader(title, category, image) {
     const imgPath = `../${image}`;
     const header = el('div');
-    header.classList.add('lecture__header');
+    header.classList.add('lecture__header__div');
     header.style.backgroundImage = `url(${imgPath})`;
     header.appendChild(el('h2', category));
     header.appendChild(el('h1', title));

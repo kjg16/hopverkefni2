@@ -76,7 +76,7 @@ img { /* stylelint-disable-line */
 
 .lecture__text {
   display: inline-block;
-  width: 66%;
+  max-width: $text-width;
   padding: 2px 0;
   margin: 20px auto;
   line-height: 1.3;
@@ -98,7 +98,7 @@ iframe { /* stylelint-disable-line */
 .lecture__video__div {
   position: relative;
   display: inline-block;
-  width: 66%;
+  max-width: $text-width;
   margin: auto;
   margin-top: 30px;
   align-content: center;
@@ -117,7 +117,13 @@ iframe { /* stylelint-disable-line */
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: 100%;
+}
 
+.lecture__header__div {
+  padding: 10vh;
+  background-repeat: no-repeat;
+  background-position: 50% 25%;
+  background-size: 100%;
 }
 
 .protector {
@@ -138,7 +144,7 @@ iframe { /* stylelint-disable-line */
 
 .img__div {
   display: block;
-  max-width: 66%;
+  max-width: $text-width;
   align-items: center;
   margin-right: auto;
   margin-left: auto;
@@ -146,19 +152,19 @@ iframe { /* stylelint-disable-line */
 
 .lecture__quote {
   display: inline-block;
-  max-width: 66%;
-  padding: 2px 0;
+  width: $text-width;
+  padding: 10px;
   margin: 20px auto;
   line-height: 1.3;
   text-align: left;
-  background-color: #cc9694;
-  border: 1px solid #cc9694;
+  background-color: $color-4;
+  border: 1px solid $color-4;
   grid-column: 1/12;
   justify-content: left;
 }
 
 .lecture__heading {
-  max-width: 66%;
+  max-width: $text-width;
   padding-block-start: 20px;
   padding-block-end: 20px;
   margin: 20px auto;
@@ -167,7 +173,7 @@ iframe { /* stylelint-disable-line */
 
 .lecture__code {
   display: inline-block;
-  max-width: 66%;
+  max-width: $text-width;
   padding: 2px 0;
   margin: 20px auto;
   line-height: 1.3;
@@ -177,7 +183,7 @@ iframe { /* stylelint-disable-line */
 
 .lecture__list__container {
   display: inline-block;
-  width: 800px;
+  max-width: $text-width;
   padding: 2px 0;
   margin: 20px auto;
   line-height: 1.3;
@@ -206,7 +212,7 @@ li.lecture__list { /* stylelint-disable-line */
 
   }
 
-  .lecture__box {
+  .lecture__box { /* stylelint-disable-line */
     width: 100%;
     padding-right: 10px;
     padding-left: 10px;
