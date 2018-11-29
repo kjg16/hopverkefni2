@@ -9,9 +9,19 @@ export default class List {
     this.container = document.querySelector('.list');
   }
 
+  onClickLecture(e) {
+    window.location.href = e.currentTarget.children[0].textContent;
+  }
+
   createListItem(lecture) {
     const div = el('div');
     div.classList.add('lecture');
+    div.addEventListener('click', this.onClickLecture);
+
+    const url = el('span');
+    url.classList.add('hidden');
+    url.textContent = `../../fyrirlestur.html?slug=${lecture.slug}`;
+    div.appendChild(url);
 
     if (lecture.thumbnail) {
       const thumbnail = el('img');
@@ -36,11 +46,11 @@ export default class List {
       div.appendChild(span);
     }
 
-    const link = el('a', div);
-    link.href = `../../fyrirlestur.html?slug=${lecture.slug}`;
-    link.classList.add('lecture__link');
+    // const link = el('a', div);
+    // link.href = `../../fyrirlestur.html?slug=${lecture.slug}`;
+    // link.classList.add('lecture__link');
 
-    return link;
+    return div;
   }
 
   init(data, filters) {
