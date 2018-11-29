@@ -14,8 +14,8 @@ $color-6: #1a1;
 $color-7: #fcffd2;
 $color-8: #cc9694;
 
-$font-main: 'Lora', serif;
-$font-heading: 'Roboto Mono', monospace;
+$font-main: "Lora", serif;
+$font-heading: "Roboto Mono", monospace;
 
 // Leturstærðir
 // 12 24 32 48
@@ -40,4 +40,3 @@ $transition: 300ms ease-in-out;
 @mixin offset-left($cols: 0) {
   margin-left: ($cols/12 * 100) * 1%;
 }
-
