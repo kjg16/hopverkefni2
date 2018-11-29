@@ -23,5 +23,30 @@ html { /* stylelint-disable-line */
 img { /* stylelint-disable-line */
   max-width: 100%;
 }
+.filter__button {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* fyrirlestrar*/
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.lectures {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
+}
+
+@import "config";
+@import "header";
+@import "lecture";
 
 // TODO import
