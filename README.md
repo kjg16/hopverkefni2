@@ -1,5 +1,39 @@
 # Hópverkefni 2
 
+Verkefnið er að setja upp fyrirlestrarvef eftir forskrift.
+
+## Keyrsla verkefnis
+
+Eftir að náð hefur verið í verkefni þarf að keyra skipunina `npm install` til að ná pakka sem nauðsynlegir eru fyrir keyrslu verkefnisins. Þetta eru m.a. node-sass þýðandi sem þýðir úr `sass` yfir í `css` og rollup, sem tekur saman javascript kóða og setur saman í eina skrá.
+
+Til að þýða sass kóða og 'bundla' javascript kóða má að keyra skipunina `npm run dev`, eða skipanirnar `node-sass ./src/styles/styles.scss ./dist/styles.css` og `rollup -c`.
+
+Eftir það er hægt að opna index.html í vafra og keyra allar síður verkefnisins.
+
+## Uppsetning og skipulag verkefnis
+
+Öll gögn verkefnisins eru geymd í skránni `lectures.json`.
+
+Forsíða verkefnisins er í skjalinu `index.html`. Forsíða nær í gögn, sýnir mynd (thumbnail, ef thumbnail er ekki til staðar er sýndur grár kassi), flokk og heiti hvers fyrirlesturs, auk þess sem hægt er að sjá hvort fyrirlestur hefur verið kláraður eða ekki. Upplýsingar um hvaða fyrirlestrar hafa verið kláraðir eru geymdar í local storage.
+
+Ef ýtt er á einhvern fyrirlestur er farið yfir í skránna `fyrirlestur.html`, þar sem slug fyrirlestrarins sem beðið er um ræður hvaða gögn birtast - þ.e. aðeins þau gögn sem fylgja fyrirlestrinum með það tiltekna slug. Í fyrirlestrinum er hægt að ýta á takkann `Klára fyrilestur`, við það bætist slug þess fyrirlesturs í local storage.
+
+Allur `javascript` og `scss` kóði er geymdur í möppunni `/src`, javascript kóði í möppunni `/src/lib` og sass kóði í möppunni `/src/styles`. Þegar kóði er tekinn saman eru loka-skrár síðan settar í möppuna `/dist`, en þangað vísa HTML skrár.
+
+Virkni `index.html` er skilgreind í `list.js` og fyrirlestrasíðurnar eru skilgreindar í `lecture.js`. Síður byrja að mestu tómar og er javascript kóðinn látinn bæta inn því efni sem á heima á síðunni hverju sinni. Upplýsingar um hvernig javascript skuli bæta upplýsingum í local storage eru í `storage.js`.
+
+Allar myndir sem notaðar eru í verkefninu eru geymdar í möppunni `/img`, upplýsingar um hvaða mynd skuli nota hverju sinni fást úr `json` skrá.
+
+## Þeir sem unnu verkefnið
+
+Arnar Imsland ari20@hi.is - Tölvunarfræðinemi
+
+Karl Jóhann Guðsteinsson kjg16@hi.is - Tölvunarfræðinemi
+
+Urður Gunnsteinsdóttir urg3@hi.is - Tölvunarfræðinemi
+
+# Hópverkefni 2
+
 Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.
 
 Gefnar eru [fyrirmyndir](utlit/) í `500px` og `1500px` án grindar ásamt `1500px` með grind. Allt efni skal skalast snyrtilega á milli.
