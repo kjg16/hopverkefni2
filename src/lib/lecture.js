@@ -37,14 +37,17 @@ export default class Lecture {
   }
 
   embedVideo(link) {
-    const videodiv = el('div');
-    videodiv.classList.add('lecture__video');
+    const videoouterdiv = el('div');
+    const videoinnerdiv = el('div');
+    videoouterdiv.classList.add('lecture__video__div');
+    videoinnerdiv.classList.add('lecture__video');
     const video = el('iframe');
     video.setAttribute('src', link);
     video.setAttribute('frameborder', 0);
-    videodiv.appendChild(video);
+    videoouterdiv.appendChild(videoinnerdiv);
+    videoinnerdiv.appendChild(video);
     const lecture = this.container;
-    lecture.appendChild(videodiv);
+    lecture.appendChild(videoouterdiv);
   }
 
   renderImg(image, caption) {
