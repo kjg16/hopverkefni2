@@ -11,7 +11,7 @@
   max-width: $max-width;
   margin: 0 auto;
 
-  &__content {
+  &__container {
     width: 100%;
     background-color: $color-2;
     opacity: 0.6;
@@ -19,13 +19,13 @@
     
   }
 
-  &__overtitle {
+  &__fyrirsögn {
     text-align: center;
     margin-top: 2*$gutter;
     font-family: $font-main;
   }
   
-  &__title {
+  &__titill {
     margin-bottom: 2*$gutter;
 
     font-family: $font-heading;
