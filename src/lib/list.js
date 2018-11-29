@@ -6,7 +6,7 @@ import { loadSavedLectures } from './storage';
 
 export default class List {
   constructor() {
-    this.container = document.querySelector('.list');
+    this.container = document.querySelector('.lectures');
   }
 
   onClickLecture(e) {
@@ -15,7 +15,7 @@ export default class List {
 
   createListItem(lecture) {
     const div = el('div');
-    div.classList.add('lecture');
+    div.classList.add('lecture__box');
     div.addEventListener('click', this.onClickLecture);
 
     const url = el('span');
