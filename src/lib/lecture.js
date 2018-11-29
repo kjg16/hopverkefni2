@@ -85,10 +85,10 @@ export default class Lecture {
   createList(listArray) {
     const listdiv = el('div');
     listdiv.classList.add('lecture__list__container');
-    const list = el('li');
+    const list = el('ul');
     list.classList.add('lecture__list');
     for (let i = 0; i < listArray.length; i += 1) {
-      const item = el('ul', listArray[i]);
+      const item = el('li', listArray[i]);
       item.classList.add('lecture__list__item');
       list.appendChild(item);
     }
