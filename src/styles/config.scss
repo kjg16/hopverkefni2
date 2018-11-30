@@ -33,8 +33,8 @@ $transition: 300ms ease-in-out;
   // margföldum með "1%" til að breyta gildi í prósentu gildi
   width: ($col / 12 * 100) * 1%;
 
-  padding-right: $gutter / 2;
-  padding-left: $gutter / 2;
+  // padding-right: $gutter / 2;
+  // padding-left: $gutter / 2;
 }
 
 @mixin offset-left($cols: 0) {

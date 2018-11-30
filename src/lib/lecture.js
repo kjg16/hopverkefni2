@@ -5,7 +5,7 @@ export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
     this.header = document.querySelector('.lecture__header');
-    this.url = '../lectures.json';
+    this.url = 'lectures.json';
   }
 
   loadLecture(inputSlug) {
@@ -26,7 +26,7 @@ export default class Lecture {
   }
 
   setHeader(title, category, image) {
-    const imgPath = `../${image}`;
+    const imgPath = `./${image}`;
     const header = el('div');
     header.classList.add('lecture__header');
     header.style.backgroundImage = `url(${imgPath})`;

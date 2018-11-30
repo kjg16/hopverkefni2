@@ -20,7 +20,7 @@ export default class List {
 
     const url = el('span');
     url.classList.add('hidden');
-    url.textContent = `../../fyrirlestur.html?slug=${lecture.slug}`;
+    url.textContent = `./fyrirlestur.html?slug=${lecture.slug}`;
     div.appendChild(url);
 
     if (lecture.thumbnail) {
@@ -72,7 +72,7 @@ export default class List {
   }
 
   load(filters) {
-    fetch('../../lectures.json')
+    fetch('lectures.json')
       .then(responce => responce.json())
       .then(json => this.init(json, filters))
       // eslint-disable-next-line no-console
