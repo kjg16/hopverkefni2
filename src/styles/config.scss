@@ -2,9 +2,6 @@ $max-width: 1200px;
 $text-width: 800px;
 $gutter: 20px;
 
-$max-width: 1200px;
-$gutter: 20px;
-
 $color-1: #000;
 $color-2: #999;
 $color-3: #aaa;
@@ -37,6 +34,6 @@ $transition: 300ms ease-in-out;
   // padding-left: $gutter / 2;
 }
 
-@mixin offset-left($cols: 0) {
-  margin-left: ($cols/12 * 100) * 1%;
+@mixin offset-left($col: 0) {
+  margin-left: ($col/12 * 100) * 1%;
 }
